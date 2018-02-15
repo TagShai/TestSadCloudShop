@@ -26,6 +26,9 @@ public class ProductController {
         product1.setFullDescription("This is full description of the milk");
         product1.setImage("image.png");
         product1.setNovelty(true);
+
+        products.add(product1);
+
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 }
