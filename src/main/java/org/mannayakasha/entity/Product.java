@@ -1,7 +1,5 @@
 package org.mannayakasha.entity;
 
-import javax.persistence.*;
-
 /**
  * Simple JavaBean object, that represents entity product.
  *

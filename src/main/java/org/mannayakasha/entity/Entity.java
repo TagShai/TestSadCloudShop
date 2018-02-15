@@ -1,6 +1,5 @@
 package org.mannayakasha.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
