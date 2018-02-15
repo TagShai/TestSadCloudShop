@@ -2,6 +2,8 @@ package org.mannayakasha;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * Class, that contains method main() and launches the app.
@@ -11,7 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-public class SadCloudShop {
+@ComponentScan
+public class SadCloudShop extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(SadCloudShop.class, args);
     }
