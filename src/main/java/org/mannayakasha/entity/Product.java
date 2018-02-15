@@ -9,26 +9,18 @@ import javax.persistence.*;
  * @version 1.0 25.10.2017.
  */
 
-@javax.persistence.Entity
-@Table(name = "products")
 public class Product extends Entity {
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
     private Double price;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "full_description")
     private String fullDescription;
 
-    @Column(name = "image")
     private String image;
 
-    @Column(name = "novelty")
     private boolean novelty;
 
     public Product() {}

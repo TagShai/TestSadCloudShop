@@ -1,3 +1,4 @@
+/*
 package org.mannayakasha.dao.impl;
 
 import org.mannayakasha.dao.interfaces.IProductDao;
@@ -9,15 +10,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+*/
 /**
  * Implementation of {@link org.mannayakasha.dao.interfaces.IProductDao} interface.
  *
  * @author Pavel Milovidov
  * @version 1.0 25.10.2017.
- */
+ *//*
+
 
 @Repository
-@Transactional
 public class ProductDaoImpl implements IProductDao {
 
     @PersistenceContext
@@ -79,3 +81,4 @@ public class ProductDaoImpl implements IProductDao {
         return count > 0;
     }
 }
+*/

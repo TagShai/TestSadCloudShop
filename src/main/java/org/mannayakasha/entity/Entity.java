@@ -10,12 +10,8 @@ import java.io.Serializable;
  * @version 1.0 25.10.2017.
  */
 
-@MappedSuperclass
 public abstract class Entity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     private Integer id;
 
     protected Entity() {}
