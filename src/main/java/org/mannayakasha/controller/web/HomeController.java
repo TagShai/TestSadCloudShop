@@ -1,9 +1,8 @@
 package org.mannayakasha.controller.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Home Controller
@@ -12,16 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @version 1.0 25.10.2017
  */
 
-@Controller
+@RestController
 public class HomeController {
 
-    @GetMapping("/")
-    public String home(Model model) {
-        return "Hello, Pavel!";
-    }
-
-    @GetMapping("/index")
+    @GetMapping("/hello")
     public String index(Model model) {
-        return "Pavel, you are welcome!";
+        return "Hello, Pavel!";
     }
 }
