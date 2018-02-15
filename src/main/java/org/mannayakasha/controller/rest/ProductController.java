@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product")
 //@CrossOrigin(origins = {"http://localhost:8100","file://"})
+@CrossOrigin
 public class ProductController {
 
     @GetMapping("/products")
