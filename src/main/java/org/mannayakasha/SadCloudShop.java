@@ -13,8 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 
 @SpringBootApplication
-@ComponentScan
-public class SadCloudShop extends SpringBootServletInitializer {
+public class SadCloudShop {
     public static void main(String[] args) {
         SpringApplication.run(SadCloudShop.class, args);
     }
