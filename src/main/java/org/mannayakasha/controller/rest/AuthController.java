@@ -72,7 +72,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public String signup(@RequestBody User signupUser) {
-        if (this.userService.usernameExists(signupUser.getUsername())) {
+        if (this.userService.getByUsername(signupUser.getUsername()) != null) {
             return "EXISTS";
         }
 

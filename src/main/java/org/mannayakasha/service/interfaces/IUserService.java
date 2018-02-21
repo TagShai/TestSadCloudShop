@@ -18,5 +18,5 @@ public interface IUserService extends IService<User> {
 
     User getByEmail(String email);
 	
-	User getByUsername(String username)
+	User getByUsername(String username);
 }
