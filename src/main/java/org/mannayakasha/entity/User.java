@@ -1,5 +1,7 @@
 package org.mannayakasha.entity;
 
+import javax.persistence.*;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @javax.persistence.Entity
