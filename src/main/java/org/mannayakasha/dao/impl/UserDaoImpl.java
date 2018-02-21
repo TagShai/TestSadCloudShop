@@ -73,8 +73,6 @@ public class UserDaoImpl implements IUserDao {
 		newUser.setUsername(user.getUsername());
         newUser.setEmail(user.getEmail());
         newUser.setPassword(user.getPassword());
-        newUser.setActive(user.isActive());
-		newUser.setAvatar(user.getAvatar());
         entityManager.flush();
     }
 
