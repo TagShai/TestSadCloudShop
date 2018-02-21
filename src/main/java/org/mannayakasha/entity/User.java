@@ -2,24 +2,39 @@ package org.mannayakasha.entity;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-public class User {
-
-    private String name;
-
+@javax.persistence.Entity
+@Table(name = "users")
+public class User extends Entity {
+	
+	@Column(name = "username")
     private String username;
 
+	@Column(name = "email")
     private String email;
 
+	@Column(name = "password")
     private String password;
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+	
+	@Transient
+    private String confirmPassword;
+	
+    @Column(name = "active")
+    private boolean active;
+	
+	@Column(name = "avatar")
+	private String avatar;
+	
+	public User() {}
+	
+	public User(Integer id, String username, String email, String password, boolean active, String avatar) {
+		super(id);
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.active = active;
+		this.avatar = avatar;
+	}
+	
     public String getUsername() {
         return this.username;
     }
@@ -47,4 +62,20 @@ public class User {
     public void encodePassword(PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(this.password);
     }
+	
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+	
+	public String getAvatar() {
+		return this.avatar;
+	}
+	
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 }
