@@ -3,7 +3,8 @@ package org.mannayakasha.security;
 import java.util.Collections;
 
 import org.mannayakasha.entity.User;
-import org.mannayakasha.entity.UserService;
+//import org.mannayakasha.entity.UserService;
+import org.mannayakasha.service.interfaces.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,16 +13,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class AppUserDetailService implements UserDetailsService {
 
-    private final UserService userService;
+    private final IUserService userService;
 
-    public AppUserDetailService(UserService userService) {
+    public AppUserDetailService(IUserService userService) {
         this.userService = userService;
     }
 
     @Override
     public final UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        final User user = this.userService.lookup(username);
+        final User user = this.userService.getByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User '" + username + "' not found");
         }
