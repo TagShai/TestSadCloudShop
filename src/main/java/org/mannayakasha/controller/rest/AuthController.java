@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.mannayakasha.entity.User;
-import org.mannayakasha.entity.UserService;
+import org.mannayakasha.service.interfaces.IUserService;
 import org.mannayakasha.security.jwt.TokenProvider;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class AuthController {
 
-    private final UserService userService;
+    private final IUserService userService;
 
     private final TokenProvider tokenProvider;
 
@@ -30,17 +30,17 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
 
-    public AuthController(PasswordEncoder passwordEncoder, UserService userService,
+    public AuthController(PasswordEncoder passwordEncoder, IUserService userService,
                           TokenProvider tokenProvider, AuthenticationManager authenticationManager) {
         this.userService = userService;
         this.tokenProvider = tokenProvider;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
 
-        User user = new User();
+        /*User user = new User();
         user.setUsername("admin");
         user.setPassword(this.passwordEncoder.encode("admin"));
-        this.userService.save(user);
+        this.userService.save(user);*/
     }
 
     @GetMapping("/authenticate")
@@ -71,12 +71,12 @@ public class AuthController {
 
     @PostMapping("/signup")
     public String signup(@RequestBody User signupUser) {
-        if (this.userService.usernameExists(signupUser.getUsername())) {
+        if (this.userService.userExists(signupUser.getUsername())) {
             return "EXISTS";
         }
 
         signupUser.encodePassword(this.passwordEncoder);
-        this.userService.save(signupUser);
+        this.userService.create(signupUser);
         return this.tokenProvider.createToken(signupUser.getUsername());
     }
 
