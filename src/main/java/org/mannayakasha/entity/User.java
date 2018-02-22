@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Table(name = "users")
 public class User extends Entity {
 
-	
 	@Column(name = "name")
 	private String name;
 	
