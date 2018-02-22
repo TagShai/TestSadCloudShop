@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Set;
+
 @javax.persistence.Entity
 @Table(name = "users")
 public class User extends Entity {
@@ -19,6 +21,11 @@ public class User extends Entity {
 
 	@Column(name = "password")
     private String password;
+
+    @ManyToMany
+    @JoinTable(name = "wishes", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private Set<Product> wishes;
+    //private List<Wish> wishes;
 	
 	/*@Transient
     private String confirmPassword;
@@ -31,12 +38,13 @@ public class User extends Entity {
 	
 	public User() {}
 	
-	public User(Integer id, String name, String username, String email, String password) {
+	public User(Integer id, String name, String username, String email, String password, Set<Product> wishes) {
 		super(id);
         this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.wishes = wishes;
 	}
 	
     public String getName() {
@@ -73,5 +81,13 @@ public class User extends Entity {
 
     public void encodePassword(PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(this.password);
+    }
+
+    public Set<Product> getWishes() {
+        return wishes;
+    }
+
+    public void setWishes(Set<Product> wishes) {
+        this.wishes = wishes;
     }
 }
