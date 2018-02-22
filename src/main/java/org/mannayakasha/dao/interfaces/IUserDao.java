@@ -18,5 +18,5 @@ public interface IUserDao extends IDao<User> {
 
     User getByEmail(String email);
 
-    boolean userExists(String email);
+    boolean userExists(String username);
 }

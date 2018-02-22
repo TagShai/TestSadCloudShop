@@ -43,7 +43,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean create(User user) {
-        if (userDao.userExists(user.getEmail())) {
+        if (userDao.userExists(user.getUsername())) {
             return false;
         } else {
             userDao.create(user);
@@ -53,9 +53,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean userExists(String username) {
-        String hql = "FROM User as u WHERE u.username = ?";
-        int count = entityManager.createQuery(hql).setParameter(1, username).getResultList().size();
-        return count > 0;
+        return userDao.userExists(user.getUsername());
     }
 
     @Override
