@@ -3,7 +3,6 @@ package org.mannayakasha.security;
 import java.util.Collections;
 
 import org.mannayakasha.entity.User;
-//import org.mannayakasha.entity.UserService;
 import org.mannayakasha.service.interfaces.IUserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

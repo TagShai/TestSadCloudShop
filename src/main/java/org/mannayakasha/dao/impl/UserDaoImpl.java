@@ -47,6 +47,21 @@ public class UserDaoImpl implements IUserDao {
     }
 
     @Override
+    public User getByUsername(String username) {
+        String hql = "SELECT user FROM User as user WHERE lower(user.username) like :username";
+
+        User user = null;
+
+        try {
+            user = (User) entityManager.createQuery(hql).setParameter("username", username).getSingleResult();
+        } catch (NoResultException e) {
+
+        } finally {
+            return user;
+        }
+    }
+
+    @Override
     public boolean userExists(String username) {
         String hql = "FROM User as u WHERE u.username = ?";
         int count = entityManager.createQuery(hql).setParameter(1, username).getResultList().size();
