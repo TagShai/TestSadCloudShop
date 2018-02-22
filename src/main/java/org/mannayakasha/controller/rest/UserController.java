@@ -39,6 +39,12 @@ public class UserController {
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
+    @GetMapping("user")
+    public ResponseEntity<User> getUserByUsername(@RequestParam("username") String username) {
+        User user = userService.getByUsername(username);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
+
     @PostMapping("user")
     public ResponseEntity<Void> create(@RequestBody User user, UriComponentsBuilder builder) {
         boolean flag = userService.create(user);
