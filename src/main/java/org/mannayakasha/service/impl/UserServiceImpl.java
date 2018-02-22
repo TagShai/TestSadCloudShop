@@ -53,7 +53,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean userExists(String username) {
-        return userDao.userExists(user.getUsername());
+        return userDao.userExists(username);
     }
 
     @Override
