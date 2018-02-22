@@ -19,4 +19,6 @@ public interface IUserService extends IService<User> {
     User getByEmail(String email);
 	
 	User getByUsername(String username);
+
+    boolean userExists(String username);
 }

@@ -31,8 +31,9 @@ public class User extends Entity {
 	
 	public User() {}
 	
-	public User(Integer id, String username, String email, String password) {
+	public User(Integer id, String name, String username, String email, String password) {
 		super(id);
+        this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;

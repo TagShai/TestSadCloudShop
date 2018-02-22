@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.mannayakasha.entity.User;
-//import org.mannayakasha.entity.UserService;
 import org.mannayakasha.service.interfaces.IUserService;
 import org.mannayakasha.security.jwt.TokenProvider;
 import org.springframework.http.HttpStatus;
@@ -72,7 +71,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     public String signup(@RequestBody User signupUser) {
-        if (this.userService.getByUsername(signupUser.getUsername()) != null) {
+        if (this.userService.userExists(signupUser.getUsername())) {
             return "EXISTS";
         }
 

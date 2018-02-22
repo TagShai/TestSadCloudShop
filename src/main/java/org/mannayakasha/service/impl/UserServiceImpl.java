@@ -52,6 +52,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public boolean userExists(String username) {
+        String hql = "FROM User as u WHERE u.username = ?";
+        int count = entityManager.createQuery(hql).setParameter(1, username).getResultList().size();
+        return count > 0;
+    }
+
+    @Override
     public void update(User user) {
         userDao.update(user);
     }
