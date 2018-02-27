@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class Order extends Entity {
 
     @ManyToOne(fetch = FetchType.LAZY)//@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
+    @JoinColumn(name = "user_id")//, foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)//@ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
+    @JoinColumn(name = "status_id")//, foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
     private OrderStatus status;
 
     @Column(name = "total")
