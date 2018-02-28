@@ -13,11 +13,11 @@ import javax.persistence.*;
 @Table(name = "orders")
 public class Order extends Entity {
 
-    @ManyToOne(fetch = FetchType.LAZY)//@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")//, foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)//@ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "status_id")//, foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
     private OrderStatus status;
 
