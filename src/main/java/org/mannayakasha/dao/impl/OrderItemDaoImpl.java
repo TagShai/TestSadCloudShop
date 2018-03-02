@@ -39,7 +39,7 @@ public class OrderItemDaoImpl implements IOrderItemDao {
     public void update(OrderItem orderItem) {
         OrderItem newOrderItem = getById(orderItem.getId());
         newOrderItem.setProduct(orderItem.getProduct());
-        newOrderItem.setOrder(orderItem.getOrder());
+        //newOrderItem.setOrder(orderItem.getOrder());
         newOrderItem.setQuantity(orderItem.getQuantity());
         newOrderItem.setPrice(orderItem.getPrice());
         entityManager.flush();

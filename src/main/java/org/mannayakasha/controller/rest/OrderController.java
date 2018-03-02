@@ -1,6 +1,7 @@
 package org.mannayakasha.controller.rest;
 
 import org.mannayakasha.entity.Order;
+import org.mannayakasha.entity.OrderItem;
 import org.mannayakasha.service.interfaces.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -26,6 +27,12 @@ public class OrderController {
 
     @Autowired
     private IOrderService orderService;
+
+    @GetMapping("orderItems/{id}")
+    public ResponseEntity<List<OrderItem>> getOrderItems(@PathVariable Integer id) {
+        List<OrderItem> orderItems = orderService.getOrderItems(id);
+        return new ResponseEntity<List<OrderItem>>(orderItems, HttpStatus.OK);
+    }
 
     @GetMapping("orders")
     public ResponseEntity<List<Order>> getAll() {

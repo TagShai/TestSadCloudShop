@@ -17,7 +17,9 @@ public interface IOrderDao extends IDao<Order> {
 
     List<Order> getAll();
 
-    //List<Order> getAllWithUser(User user); // String username
+    Order getCart(String username);
+
+    //List<Order> getAllWithUser(String username); // User user
 
     List<OrderItem> getOrderItems(Integer orderId);
 

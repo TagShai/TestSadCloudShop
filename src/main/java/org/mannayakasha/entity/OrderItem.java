@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class OrderItem extends Entity {
 
     @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")//, nullable = false, foreignKey = @ForeignKey(name = "ORDER_ITEM_PRODUCT_FK"))
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")//, nullable = false, foreignKey = @ForeignKey(name = "ORDER_ITEM_ORDER_FK"))
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @Column(name = "quantity")
@@ -45,13 +45,13 @@ public class OrderItem extends Entity {
         this.product = product;
     }
 
-    public Order getOrder() {
+    /*public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
-    }
+    }*/
 
     public Integer getQuantity() {
         return quantity;

@@ -1,6 +1,7 @@
 package org.mannayakasha.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Simple JavaBean object, that represents entity order.
@@ -13,32 +14,28 @@ import javax.persistence.*;
 @Table(name = "orders")
 public class Order extends Entity {
 
-    @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")//, foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
+    @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_id")//, foreignKey = @ForeignKey(name = "ORDER_USER_FK"))
+    @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "status_id")
     private OrderStatus status;
 
     @Column(name = "total")
     private Double total;
 
+    @OneToMany(mappedBy = "order")
+    private Set<OrderItem> orderItems;
+
     public Order() {}
 
-    public Order(Integer id, User user, OrderStatus status, Double total) {
+    public Order(Integer id, User user, OrderStatus status, Double total, Set<OrderItem> orderItems) {
         super(id);
         this.user = user;
         this.status = status;
         this.total = total;
-    }
-
-    public User getUser() {
-        return this.user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+        this.orderItems = orderItems;
     }
 
     public OrderStatus getStatus() {
@@ -56,4 +53,5 @@ public class Order extends Entity {
     public void setTotal(Double total) {
         this.total = total;
     }
+
 }

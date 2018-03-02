@@ -39,7 +39,7 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public void update(Order order) {
         Order newOrder = getById(order.getId());
-        newOrder.setUser(order.getUser());
+        //newOrder.setUser(order.getUser());
         newOrder.setStatus(order.getStatus());
         newOrder.setTotal(order.getTotal());
         entityManager.flush();
@@ -58,9 +58,16 @@ public class OrderDaoImpl implements IOrderDao {
     }
 
     @Override
+    public Order getCart(String username) {
+        String hql = "SELECT order FROM Order as order WHERE order.user.username = ? AND order.status.id = 1";
+        return (Order) entityManager.createQuery(hql).setParameter(1, username).getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
     public List<OrderItem> getOrderItems(Integer orderId) {
         String hql = "SELECT orderItems FROM OrderItem as orderItems WHERE orderItems.order.id = :orderId";
-        return (List<OrderItem>) entityManager.createQuery(hql).getResultList();
+        return (List<OrderItem>) entityManager.createQuery(hql).setParameter("orderId", orderId).getResultList();
     }
 
     /*@Override

@@ -25,7 +25,9 @@ public class User extends Entity {
     @ManyToMany
     @JoinTable(name = "wishes", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> wishes;
-    //private List<Wish> wishes;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Order> orders;
 	
 	/*@Transient
     private String confirmPassword;
@@ -37,14 +39,15 @@ public class User extends Entity {
 	private String avatar;*/
 	
 	public User() {}
-	
-	public User(Integer id, String name, String username, String email, String password, Set<Product> wishes) {
+
+	public User(Integer id, String name, String username, String email, String password, Set<Product> wishes, Set<Order> orders) {
 		super(id);
         this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.wishes = wishes;
+        this.orders = orders;
 	}
 	
     public String getName() {
@@ -89,5 +92,13 @@ public class User extends Entity {
 
     public void setWishes(Set<Product> wishes) {
         this.wishes = wishes;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
     }
 }
