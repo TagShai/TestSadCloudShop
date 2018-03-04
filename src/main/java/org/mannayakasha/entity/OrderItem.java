@@ -1,5 +1,8 @@
 package org.mannayakasha.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -13,12 +16,13 @@ import javax.persistence.*;
 @Table(name = "order_items")
 public class OrderItem extends Entity {
 
-    @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @ManyToOne(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
+    @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id", referencedColumnName = "id")
+    @JsonBackReference
     private Order order;
 
     @Column(name = "quantity")
@@ -45,13 +49,13 @@ public class OrderItem extends Entity {
         this.product = product;
     }
 
-    /*public Order getOrder() {
+    public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
-    }*/
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -67,5 +71,15 @@ public class OrderItem extends Entity {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "product=" + product +
+                ", order=" + order +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                '}';
     }
 }

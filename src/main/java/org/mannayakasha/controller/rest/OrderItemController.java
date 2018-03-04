@@ -12,7 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 /**
- * Rest controller for the {@link Order} class.
+ * Rest controller for the {@link OrderItem} class.
  *
  * @author Pavel Milovidov
  * @version 1.0 26.02.2018.

@@ -2,6 +2,8 @@ package org.mannayakasha.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
@@ -27,6 +29,7 @@ public class User extends Entity {
     private Set<Product> wishes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Order> orders;
 	
 	/*@Transient
@@ -49,9 +52,9 @@ public class User extends Entity {
 		this.wishes = wishes;
         this.orders = orders;
 	}
-	
+
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
@@ -59,7 +62,7 @@ public class User extends Entity {
     }
 	
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public void setUsername(String username) {
@@ -67,7 +70,7 @@ public class User extends Entity {
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
@@ -75,7 +78,7 @@ public class User extends Entity {
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public void setPassword(String password) {
@@ -100,5 +103,17 @@ public class User extends Entity {
 
     public void setOrders(Set<Order> orders) {
         this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", wishes=" + wishes +
+                ", orders=" + orders +
+                '}';
     }
 }

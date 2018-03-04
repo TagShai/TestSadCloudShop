@@ -38,11 +38,7 @@ public class OrderDaoImpl implements IOrderDao {
 
     @Override
     public void update(Order order) {
-        Order newOrder = getById(order.getId());
-        //newOrder.setUser(order.getUser());
-        newOrder.setStatus(order.getStatus());
-        newOrder.setTotal(order.getTotal());
-        entityManager.flush();
+        entityManager.merge(order);
     }
 
     @Override
