@@ -47,6 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/user/**").permitAll()
 				.antMatchers("/order/**").permitAll()
 				.antMatchers("/orderItem/**").permitAll()
+				.antMatchers("/shipmentInformation/**").permitAll()
+				.antMatchers("/payment/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JWTConfigurer(this.tokenProvider));
