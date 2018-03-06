@@ -2,12 +2,13 @@ package org.mannayakasha.controller.rest;
 
 import org.mannayakasha.service.impl.StripeClient;
 import com.stripe.model.Charge;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Rest controller for retriev stripe token and amount from the client sides.
