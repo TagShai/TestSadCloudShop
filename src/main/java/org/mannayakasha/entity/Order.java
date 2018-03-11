@@ -1,8 +1,6 @@
 package org.mannayakasha.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -16,11 +14,12 @@ import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "orders")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Order.class)
 public class Order extends Entity {
 
-    @ManyToOne(cascade = CascadeType.ALL)//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    @JsonBackReference
+    @ManyToOne//(cascade = CascadeType.ALL)//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")//, nullable = false)
+    //@JsonBackReference
     private User user;
 
     @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
@@ -30,8 +29,8 @@ public class Order extends Entity {
     @Column(name = "total")
     private Double total;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "order")//, cascade = CascadeType.ALL)
+    //@JsonManagedReference
     private Set<OrderItem> orderItems;
 
     public Order() {}
@@ -85,4 +84,6 @@ public class Order extends Entity {
                 ", orderItems=" + orderItems +
                 '}';
     }
+
+
 }

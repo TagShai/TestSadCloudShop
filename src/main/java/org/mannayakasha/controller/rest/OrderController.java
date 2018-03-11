@@ -40,6 +40,18 @@ public class OrderController {
         return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
     }
 
+    @GetMapping("orders/{username}")
+    public ResponseEntity<List<Order>> getUserShippedOrders(@PathVariable String username) {
+        List<Order> orders = orderService.getUserShippedOrders(username);
+        return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
+    }
+
+    @GetMapping("cart/{username}")
+    public ResponseEntity<Order> getCart(@PathVariable String username) {
+        Order order = orderService.getCart(username);
+        return new ResponseEntity<Order>(order, HttpStatus.OK);
+    }
+
     @GetMapping("/order/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable Integer id) {
         Order order = orderService.getById(id);
@@ -52,9 +64,10 @@ public class OrderController {
         if (!flag) {
             return new ResponseEntity<Void>(HttpStatus.CONFLICT);
         }
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(builder.path("/order?id={id}").buildAndExpand(order.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        //HttpHeaders headers = new HttpHeaders();
+        //headers.setLocation(builder.path("/order?id={id}").buildAndExpand(order.getId()).toUri());
+        //return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<Void>(HttpStatus.CREATED);
     }
 
     @PutMapping("order")

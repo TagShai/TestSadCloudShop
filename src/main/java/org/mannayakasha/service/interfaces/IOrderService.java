@@ -17,6 +17,11 @@ public interface IOrderService extends IService<Order> {
 
     List<Order> getAll();
 
+    Order getCart(String username);
+
+    // Return list of orders without cart.
+    List<Order> getUserShippedOrders(String username);
+
     //List<Order> getAllWithUser(String username); // User user
 
     List<OrderItem> getOrderItems(Integer orderId);

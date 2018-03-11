@@ -2,14 +2,17 @@ package org.mannayakasha.entity;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
 
 @javax.persistence.Entity
 @Table(name = "users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = User.class)
 public class User extends Entity {
 
 	@Column(name = "name")
@@ -28,8 +31,8 @@ public class User extends Entity {
     @JoinTable(name = "wishes", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
     private Set<Product> wishes;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @OneToMany(mappedBy = "user")//, cascade = CascadeType.ALL)
+    //@JsonManagedReference
     private Set<Order> orders;
 	
 	/*@Transient

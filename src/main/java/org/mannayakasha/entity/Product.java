@@ -1,5 +1,8 @@
 package org.mannayakasha.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +14,7 @@ import javax.persistence.*;
 
 @javax.persistence.Entity
 @Table(name = "products")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Product.class)
 public class Product extends Entity {
 
 	@Column(name = "name")
@@ -31,7 +35,7 @@ public class Product extends Entity {
 	@Column(name = "novelty")
     private boolean novelty;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne//(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", foreignKey = @ForeignKey(name = "PRODUCT_CATEGORY_FK"))
     private Category category;
 

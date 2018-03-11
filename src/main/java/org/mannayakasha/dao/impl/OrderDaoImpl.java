@@ -56,7 +56,13 @@ public class OrderDaoImpl implements IOrderDao {
     @Override
     public Order getCart(String username) {
         String hql = "SELECT order FROM Order as order WHERE order.user.username = ? AND order.status.id = 1";
-        return (Order) entityManager.createQuery(hql).setParameter(1, username).getResultList();
+        return (Order) entityManager.createQuery(hql).setParameter(1, username).getSingleResult();
+    }
+
+    @Override
+    public List<Order> getUserShippedOrders(String username) {
+        String hql = "SELECT order FROM Order as order WHERE order.user.username = ? AND order.status.id != 1";
+        return (List<Order>) entityManager.createQuery(hql).setParameter(1, username).getResultList();
     }
 
     @Override

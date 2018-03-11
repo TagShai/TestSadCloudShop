@@ -1,7 +1,9 @@
 package org.mannayakasha.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 
@@ -14,6 +16,7 @@ import javax.persistence.*;
 
 @javax.persistence.Entity
 @Table(name = "order_items")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = OrderItem.class)
 public class OrderItem extends Entity {
 
     @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
@@ -22,7 +25,7 @@ public class OrderItem extends Entity {
 
     @ManyToOne//(fetch = FetchType.EAGER)//@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
-    @JsonBackReference
+    //@JsonBackReference
     private Order order;
 
     @Column(name = "quantity")

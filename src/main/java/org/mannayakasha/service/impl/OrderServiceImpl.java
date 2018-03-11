@@ -53,6 +53,16 @@ public class OrderServiceImpl implements IOrderService {
     }
 
     @Override
+    public List<Order> getUserShippedOrders(String username) {
+        return orderDao.getUserShippedOrders(username);
+    }
+
+    @Override
+    public Order getCart(String username) {
+        return orderDao.getCart(username);
+    }
+
+    @Override
     public List<OrderItem> getOrderItems(Integer orderId) {
         return orderDao.getOrderItems(orderId);
     }
