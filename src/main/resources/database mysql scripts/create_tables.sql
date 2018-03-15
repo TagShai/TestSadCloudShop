@@ -101,14 +101,13 @@ CREATE TABLE IF NOT EXISTS `wishes` (
     DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE IF NOT EXISTS `shipments_information` (
-  `id` INTEGER(11) NOT NULL,
+  `id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `order_id` INTEGER(11) NOT NULL,
   `country` VARCHAR(255) NOT NULL,
   `phone_number` VARCHAR(255) NOT NULL,
   `address_line_1` VARCHAR(255) NOT NULL,
   `address_line_2` VARCHAR(255) DEFAULT NULL,
   `zip` VARCHAR(255) NOT NULL,
-  `shipment_tracking_number` VARCHAR(255) NOT NULL,
   `shipment_placed_date` DATETIME NOT NULL,
 
   FOREIGN KEY (order_id) REFERENCES orders (id)

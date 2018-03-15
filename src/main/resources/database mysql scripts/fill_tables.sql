@@ -55,8 +55,8 @@ INSERT INTO `wishes` (`id`, `user_id`, `product_id`) VALUES
 --INSERT INTO `order_items` (`id`, `product_id`, `order_id`, `quantity`, `price`) VALUES
     --(1, 5, 1, 1, )
 
---INSERT INTO `shipments_information` (`id`, `order_id`, `country`, `phone_number`, `address_line_1`, `address_line_2`, `zip`, `shipment_tracking_number`, `shipment_placed_date`) VALUES
-	--(1, 1, 'Japan', '+954 (41) 123-45-67', 'Kyoto, Higashiyama District, Yasaka Shrine', '', '123456', 'ACF1546FD4634KM' SYSDATE());
+--INSERT INTO `shipments_information` (`id`, `order_id`, `country`, `phone_number`, `address_line_1`, `address_line_2`, `zip`, `shipment_placed_date`) VALUES
+	--(1, 1, 'Japan', '+954 (41) 123-45-67', 'Kyoto, Higashiyama District, Yasaka Shrine', '', '123456', SYSDATE());
 
 INSERT INTO `order_statuses` (`id`, `name`) VALUES
     (1, 'NEW'),

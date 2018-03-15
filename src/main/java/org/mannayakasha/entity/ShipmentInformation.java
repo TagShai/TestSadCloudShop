@@ -16,12 +16,12 @@ import java.util.Date;
 
 @javax.persistence.Entity
 @Table(name = "shipments_information")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ShipmentInformation.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = ShipmentInformation.class)
 public class ShipmentInformation extends Entity {
 
     @ManyToOne//(fetch = FetchType.EAGER)
-    @JoinColumn(name = "order_id")//, foreignKey = @ForeignKey(name = "SHIPMENT_INFORMATION_ORDER_FK"))
-    @JsonBackReference
+    @JoinColumn(name = "order_id", referencedColumnName = "id")//, foreignKey = @ForeignKey(name = "SHIPMENT_INFORMATION_ORDER_FK"))
+    //@JsonBackReference
     private Order order;
 
     @Column(name = "name")
@@ -48,16 +48,13 @@ public class ShipmentInformation extends Entity {
     @Column(name = "zip")
     private String zip;
 
-    @Column(name = "shipment_tracking_number")
-    private String shipmentTrackingNumber;
-
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "shipment_placed_date")
     private Date shipmentPlacedDate;
 
     ShipmentInformation() {}
 
-    public ShipmentInformation(Integer id, Order order, String name, String lastname, String patronymic, String country, String phoneNumber, String addressLine1, String addressLine2, String zip, String shipmentTrackingNumber, Date shipmentPlacedDate) {
+    public ShipmentInformation(Integer id, Order order, String name, String lastname, String patronymic, String country, String phoneNumber, String addressLine1, String addressLine2, String zip, Date shipmentPlacedDate) {
         super(id);
         this.order = order;
         this.name = name;
@@ -68,7 +65,6 @@ public class ShipmentInformation extends Entity {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.zip = zip;
-        this.shipmentTrackingNumber = shipmentTrackingNumber;
         this.shipmentPlacedDate = shipmentPlacedDate;
     }
 
@@ -144,14 +140,6 @@ public class ShipmentInformation extends Entity {
         this.zip = zip;
     }
 
-    public String getShipmentTrackingNumber() {
-        return shipmentTrackingNumber;
-    }
-
-    public void setShipmentTrackingNumber(String shipmentTrackingNumber) {
-        this.shipmentTrackingNumber = shipmentTrackingNumber;
-    }
-
     public Date getShipmentPlacedDate() {
         return shipmentPlacedDate;
     }
@@ -172,7 +160,6 @@ public class ShipmentInformation extends Entity {
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
                 ", zip='" + zip + '\'' +
-                ", shipmentTrackingNumber='" + shipmentTrackingNumber + '\'' +
                 ", shipmentPlacedDate=" + shipmentPlacedDate +
                 '}';
     }
